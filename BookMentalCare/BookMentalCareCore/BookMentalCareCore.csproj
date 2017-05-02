@@ -51,8 +51,12 @@
   <ItemGroup>
     <Compile Include="BLL\Class1.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\Class1.cs" />
+    <Compile Include="DAL\IRessourceRepository.cs" />
+    <Compile Include="DAL\RessourceRepository.cs" />
     <Compile Include="ModelLayer\Class1.cs" />
+    <Compile Include="ModelLayer\Ressource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
