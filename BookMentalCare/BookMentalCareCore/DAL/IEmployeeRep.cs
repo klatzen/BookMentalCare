@@ -11,7 +11,7 @@ namespace BookMentalCareCore.DAL
     {
         bool SaveEmployee(Employee e);
 
-        bool DeleteEmployee(Employee e);
+        bool DeleteEmployee(string initials);
 
         Employee FindEmployee(string initials);
 
