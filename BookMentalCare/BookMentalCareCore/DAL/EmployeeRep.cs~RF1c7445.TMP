@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookMentalCareCore.DAL
 {
-    class Class1
+    interface EmployeeRep
     {
     }
 }
