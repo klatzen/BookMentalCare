@@ -22,9 +22,19 @@ namespace BookMentalCareCore.BLL
             return resRep.LoadAllRessources();
         }
 
+        public List<Unit> LoadAllUnits(int resId)
+        {
+            return resRep.LoadAllUnits(resId);
+        }
+
         public Ressource LoadRessource(int id)
         {
             return resRep.LoadRessource(id);
+        }
+
+        public Unit LoadUnit(int id)
+        {
+            return resRep.LoadUnit(id);
         }
 
         public bool RemoveRessource(int id)
@@ -42,11 +52,20 @@ namespace BookMentalCareCore.BLL
 
         }
 
+        public bool RemoveUnit(int id)
+        {
+            return resRep.RemoveUnit(id);
+        }
 
         public bool SaveRessource(Ressource ressource)
         {
             return resRep.SaveRessource(ressource);
         }
+
+        public bool SaveUnit(Unit unit)
+        {
+            return resRep.SaveUnit(unit);
+        }
     }
     }
-}
+

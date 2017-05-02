@@ -13,6 +13,10 @@ namespace BookMentalCareCore.DAL
         List<Ressource> LoadAllRessources();
         bool SaveRessource(Ressource ressource);
         bool RemoveRessource(int id);
+        Unit LoadUnit(int id);
+        List<Unit> LoadAllUnits(int resId);
+        bool RemoveUnit(int id);
+        bool SaveUnit(Unit unit);
 
     }
 }
