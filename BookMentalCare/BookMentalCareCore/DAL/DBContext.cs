@@ -17,6 +17,7 @@ namespace BookMentalCareCore.DAL
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Ressource> Ressources { get; set;  }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

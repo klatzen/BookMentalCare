@@ -11,7 +11,7 @@ namespace BookMentalCareCore.DAL
     {
         public List<Ressource> LoadAllRessources()
         {
-            throw new NotImplementedException();
+            return dbContext.Ressources.ToList();
         }
 
         public Ressource LoadRessource(int id)
@@ -36,15 +36,22 @@ namespace BookMentalCareCore.DAL
 
         public bool SaveRessource(Ressource ressource)
         {
-            if (ressource.Id > 0)
-            {
-                Ressource TempRes = LoadRessource(ressource.Id);
-                TempRes.Name = ressource.Name;
+            try {
+                if (ressource.Id > 0)
+                {
+                    Ressource TempRes = LoadRessource(ressource.Id);
+                    TempRes.Name = ressource.Name;
+                }
+                else {
+                    dbContext.Ressources.Add(ressource);
+                }
+                dbContext.SaveChanges();
+                return true;
             }
-            else {
-                dbContext.Ressources.Add(ressource);
+            catch {
+                return false;
             }
-           return  dbContext.saveChanges();
+            
         }
     }
 }
