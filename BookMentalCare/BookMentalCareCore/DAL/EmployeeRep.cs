@@ -7,7 +7,7 @@ using BookMentalCareCore.ModelLayer;
 
 namespace BookMentalCareCore.DAL
 {
-    public class EmployeeRep : IEmployeeRep
+    public class EmployeeRep : BaseRepository, IEmployeeRep
     {
         public bool DeleteEmployee(Employee e)
         {
@@ -16,7 +16,7 @@ namespace BookMentalCareCore.DAL
 
         public Employee FindEmployee(string initials)
         {
-            throw new NotImplementedException();
+            return dbContext
         }
 
         public List<Employee> GetEmployees()

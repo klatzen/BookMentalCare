@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookMentalCareCore.ModelLayer;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -14,6 +15,8 @@ namespace BookMentalCareCore.DAL
         {
 
         }
+
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
