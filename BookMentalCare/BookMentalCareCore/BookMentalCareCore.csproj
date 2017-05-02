@@ -49,13 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="BLL\IRessourceFacade.cs" />
     <Compile Include="BLL\RessourceFacade.cs" />
-=======
     <Compile Include="BLL\EmployeeFacade.cs" />
     <Compile Include="BLL\PasswordHasher.cs" />
->>>>>>> origin/Sprint1
     <Compile Include="DAL\BaseRepository.cs" />
     <Compile Include="DAL\DBContext.cs" />
     <Compile Include="DAL\EmployeeRep.cs" />
