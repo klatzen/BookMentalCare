@@ -16,18 +16,35 @@ namespace BookMentalCareCore.DAL
 
         public Ressource LoadRessource(int id)
         {
-           return dbContext.Ressources.FirstOrDefault(x => x.Id == id);
+            return dbContext.Ressources.FirstOrDefault(x => x.Id == id);
             
         }
 
         public bool RemoveRessource(int id)
         {
-            throw new NotImplementedException();
+            Ressource res = LoadRessource(id);
+                if (res != null) {
+                dbContext.Ressources.Remove(res);
+                dbContext.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public Ressource SaveRessource(Ressource ressource)
+        public bool SaveRessource(Ressource ressource)
         {
-            throw new NotImplementedException();
+            if (ressource.Id > 0)
+            {
+                Ressource TempRes = LoadRessource(ressource.Id);
+                TempRes.Name = ressource.Name;
+            }
+            else {
+                dbContext.Ressources.Add(ressource);
+            }
+           return  dbContext.saveChanges();
         }
     }
 }
