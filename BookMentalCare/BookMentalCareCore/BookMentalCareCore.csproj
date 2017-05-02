@@ -50,8 +50,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\BaseRepository.cs" />
+    <Compile Include="DAL\DBContext.cs" />
+    <Compile Include="DAL\EmployeeRep.cs" />
+    <Compile Include="DAL\IEmployeeRep.cs" />
     <Compile Include="DAL\IRessourceRepository.cs" />
     <Compile Include="DAL\RessourceRepository.cs" />
+    <Compile Include="ModelLayer\Employee.cs" />
+    <Compile Include="ModelLayer\Person.cs" />
     <Compile Include="ModelLayer\Ressource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
