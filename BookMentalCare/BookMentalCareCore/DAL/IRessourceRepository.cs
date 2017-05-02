@@ -11,7 +11,7 @@ namespace BookMentalCareCore.DAL
     {
         Ressource LoadRessource(int id);
         List<Ressource> LoadAllRessources();
-        Ressource SaveRessource(Ressource ressource);
+        bool SaveRessource(Ressource ressource);
         bool RemoveRessource(int id);
 
     }
