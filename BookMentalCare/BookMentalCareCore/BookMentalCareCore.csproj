@@ -49,19 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\Class1.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DAL\BaseRepository.cs" />
-    <Compile Include="DAL\Class1.cs" />
     <Compile Include="DAL\IRessourceRepository.cs" />
     <Compile Include="DAL\RessourceRepository.cs" />
-    <Compile Include="ModelLayer\Class1.cs" />
     <Compile Include="ModelLayer\Ressource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

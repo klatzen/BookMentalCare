@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace BookMentalCareCore.ModelLayer
         }
 
         private string initials;
-
+        [Index(IsUnique = true)]
         public string INITIALS
         {
             get { return initials; }

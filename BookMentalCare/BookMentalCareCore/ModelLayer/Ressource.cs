@@ -15,9 +15,5 @@ namespace BookMentalCareCore.ModelLayer
         public string Type { get; set; }
 
         //public List<Unit> { get; set; }
-
-
-
-
     }
 }
