@@ -9,10 +9,10 @@ using System.Web.Http;
 
 namespace BookMentalCare.Controllers
 {
-    public class EmployeeApiCtr : ApiController
+    public class EmployeeController : ApiController
     {
         private EmployeeFacade empFac;
-        public EmployeeApiCtr()
+        public EmployeeController()
         {
             this.empFac = new EmployeeFacade();
         }

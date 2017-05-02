@@ -18,7 +18,7 @@ namespace BookMentalCareCore.ModelLayer
         }
 
         private string initials;
-        [Index(IsUnique = true)]
+
         public string INITIALS
         {
             get { return initials; }
