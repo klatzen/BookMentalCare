@@ -62,6 +62,7 @@
     <Compile Include="ModelLayer\Employee.cs" />
     <Compile Include="ModelLayer\Person.cs" />
     <Compile Include="ModelLayer\Ressource.cs" />
+    <Compile Include="ModelLayer\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
