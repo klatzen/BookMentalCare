@@ -25,10 +25,9 @@ namespace BookMentalCare.Controllers
         }
 
         // GET api/<controller>/5
-        [Route("Employee/{initials}")]
-        public Employee Get(string initials)
+        public Employee Get(string id)
         {
-            return empFac.FindEmployee(initials);
+            return empFac.FindEmployee(id);
         }
 
         // POST api/<controller>
