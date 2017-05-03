@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookMentalCareCore.BLL
 {
-    public class EmployeeFacade
+    public class EmployeeFacade : IEmployeeFacade
     {
         private IEmployeeRep EmpRep;
         public EmployeeFacade()
