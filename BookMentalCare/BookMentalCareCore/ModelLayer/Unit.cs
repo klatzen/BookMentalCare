@@ -12,6 +12,10 @@ namespace BookMentalCareCore.ModelLayer
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string SerialNo { get; set; }
+        public int RessourceId { get; set; }
+        [ForeignKey("RessourceId")]
+        public Ressource Ressource { get; set; }
+
 
     }
 }

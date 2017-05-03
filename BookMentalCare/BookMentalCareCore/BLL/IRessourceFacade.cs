@@ -13,5 +13,10 @@ namespace BookMentalCareCore.BLL
         List<Ressource> LoadAllRessources();
         bool SaveRessource(Ressource ressource);
         bool RemoveRessource(int id);
+        List<Unit> LoadAllUnits(int resId);
+        Unit LoadUnit(int id);
+        bool RemoveUnit(int id);
+        bool SaveUnit(Unit unit);
+
     }
 }

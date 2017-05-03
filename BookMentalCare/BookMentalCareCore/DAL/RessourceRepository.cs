@@ -14,10 +14,20 @@ namespace BookMentalCareCore.DAL
             return dbContext.Ressources.ToList();
         }
 
+        public List<Unit> LoadAllUnits(int resId)
+        {
+            return dbContext.Units.Where(x => x.RessourceId == resId).ToList();
+        }
+
         public Ressource LoadRessource(int id)
         {
             return dbContext.Ressources.FirstOrDefault(x => x.Id == id);
             
+        }
+
+        public Unit LoadUnit(int id)
+        {
+            return dbContext.Units.FirstOrDefault(x => x.Id == id);
         }
 
         public bool RemoveRessource(int id)
@@ -29,6 +39,24 @@ namespace BookMentalCareCore.DAL
                 return true;
             }
             else
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveUnit(int id)
+        {
+            try
+            {
+                Unit tempUnit = LoadUnit(id);
+                if (tempUnit != null)
+                {
+                    dbContext.Units.Remove(tempUnit);
+                    dbContext.SaveChanges();
+                }
+                return true;
+            }
+            catch
             {
                 return false;
             }
@@ -51,6 +79,29 @@ namespace BookMentalCareCore.DAL
             catch {
                 return false;
             }
+            
+        }
+
+        public bool SaveUnit(Unit unit)
+        {
+            try
+            {
+                if (unit.Id > 0) {
+                    Unit tempUnit = LoadUnit(unit.Id);
+                    tempUnit.SerialNo = unit.SerialNo;
+                }
+                else
+                {
+                    dbContext.Units.Add(unit);
+                }
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+       
             
         }
     }
