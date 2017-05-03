@@ -9,10 +9,10 @@ using System.Web.Http;
 
 namespace BookMentalCare.Controllers
 {
-    public class EmployeeApiCtr : ApiController
+    public class EmployeeController : ApiController
     {
         private EmployeeFacade empFac;
-        public EmployeeApiCtr()
+        public EmployeeController()
         {
             this.empFac = new EmployeeFacade();
         }
@@ -25,6 +25,7 @@ namespace BookMentalCare.Controllers
         }
 
         // GET api/<controller>/5
+        [Route("Employee/{initials}")]
         public Employee Get(string initials)
         {
             return empFac.FindEmployee(initials);
@@ -38,6 +39,7 @@ namespace BookMentalCare.Controllers
         }
 
         // DELETE api/<controller>/5
+        [Route("Employee/{initials}")]
         public void Delete(string initials)
         {
             empFac.DeleteEmplyee(initials);
