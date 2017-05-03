@@ -9,6 +9,7 @@ namespace BookMentalCareCore.BLL
 {
     public interface IRessourceFacade
     {
+        //lille ændring
         Ressource LoadRessource(int id);
         List<Ressource> LoadAllRessources();
         bool SaveRessource(Ressource ressource);
