@@ -30,7 +30,7 @@ namespace BookMentalCareCore.BLL
         public bool RemoveRessource(int id)
         {
             Ressource res = LoadRessource(id);
-            if(res.units == null)
+            if (res.units == null)
             {
                 resRep.RemoveRessource(id);
                 return true;
@@ -47,6 +47,5 @@ namespace BookMentalCareCore.BLL
         {
             return resRep.SaveRessource(ressource);
         }
-    }
     }
 }
