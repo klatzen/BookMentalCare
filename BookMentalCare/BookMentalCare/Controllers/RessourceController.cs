@@ -24,8 +24,8 @@ namespace BookMentalCare.Controllers
             return resFac.LoadAllRessources();
         }
 
-        
-        public Ressource Get(int id)
+        [HttpGet]
+        public Ressource GetRessource(int id)
         {
             return resFac.LoadRessource(id);
         }
