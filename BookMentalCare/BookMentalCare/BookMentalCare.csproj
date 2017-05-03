@@ -96,8 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\EmployeeApiCtr.cs" />
-    <Compile Include="Controllers\RessourceController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -118,7 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookMentalCareCore\BookMentalCareCore.csproj">
-      <Project>{067B894F-50F2-46B8-B582-C038749714B1}</Project>
+      <Project>{067b894f-50f2-46b8-b582-c038749714b1}</Project>
       <Name>BookMentalCareCore</Name>
     </ProjectReference>
   </ItemGroup>

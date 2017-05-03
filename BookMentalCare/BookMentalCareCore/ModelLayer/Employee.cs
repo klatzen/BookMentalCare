@@ -18,6 +18,7 @@ namespace BookMentalCareCore.ModelLayer
         }
 
         private string initials;
+
         public string INITIALS
         {
             get { return initials; }
