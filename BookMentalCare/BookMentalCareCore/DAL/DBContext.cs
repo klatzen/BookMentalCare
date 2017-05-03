@@ -20,6 +20,8 @@ namespace BookMentalCareCore.DAL
         public DbSet<Ressource> Ressources { get; set;  }
         public DbSet<Unit> Units { get; set; }
 
+        public DbSet<Patient> Patients { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

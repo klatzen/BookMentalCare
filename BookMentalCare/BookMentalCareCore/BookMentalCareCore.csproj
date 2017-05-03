@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\IEmployeeFacade.cs" />
+    <Compile Include="BLL\IPatientFacade.cs" />
     <Compile Include="BLL\IRessourceFacade.cs" />
+    <Compile Include="BLL\PatientFacade.cs" />
     <Compile Include="BLL\RessourceFacade.cs" />
     <Compile Include="BLL\EmployeeFacade.cs" />
     <Compile Include="BLL\PasswordHasher.cs" />
@@ -57,9 +60,12 @@
     <Compile Include="DAL\DBContext.cs" />
     <Compile Include="DAL\EmployeeRep.cs" />
     <Compile Include="DAL\IEmployeeRep.cs" />
+    <Compile Include="DAL\IPatientRepository.cs" />
     <Compile Include="DAL\IRessourceRepository.cs" />
+    <Compile Include="DAL\PatientRepository.cs" />
     <Compile Include="DAL\RessourceRepository.cs" />
     <Compile Include="ModelLayer\Employee.cs" />
+    <Compile Include="ModelLayer\Patient.cs" />
     <Compile Include="ModelLayer\Person.cs" />
     <Compile Include="ModelLayer\Ressource.cs" />
     <Compile Include="ModelLayer\Unit.cs" />
