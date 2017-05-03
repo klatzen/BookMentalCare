@@ -25,7 +25,6 @@ namespace BookMentalCare.Controllers
         }
 
         // GET api/<controller>/5
-        [Route("Employee/{id}")]
         public Employee Get(string id)
         {
             return empFac.FindEmployee(id);
