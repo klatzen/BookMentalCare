@@ -31,26 +31,8 @@ namespace BookMentalCare.Controllers
         }
 
         
-        [Route ("Ressource/units")]
-        [HttpGet]
-        public IEnumerable<Unit> GetUnits(int resId)
-        {
-            return resFac.LoadAllUnits(resId);
-        }
 
-        [Route("Ressource/unit")]
-        [HttpGet]
-        public Unit GetUnit(int id)
-        {
-            return resFac.LoadUnit(id);
-        }
-
-        [Route("Ressource/unit")]
-        [HttpPost,HttpPut]
-        public void PostUnit([FromBody]Unit unit)
-        {
-            resFac.SaveUnit(unit);
-        }
+       
 
         [HttpPost,HttpPut]
         public void Post([FromBody]Ressource res)
@@ -64,11 +46,5 @@ namespace BookMentalCare.Controllers
             resFac.RemoveRessource(id);
         }
 
-        [Route("Ressource/unit")]
-        [HttpDelete]
-        public void DeleteUnit(int id)
-        {
-            resFac.RemoveUnit(id);
-        }
     }
 }
