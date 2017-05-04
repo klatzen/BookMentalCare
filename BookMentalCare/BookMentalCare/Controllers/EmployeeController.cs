@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
 
 namespace BookMentalCare.Controllers
 {
@@ -18,6 +19,10 @@ namespace BookMentalCare.Controllers
             this.empFac = new EmployeeFacade();
         }
 
+        public Employee SignIn(string initials, string password)
+        {
+            return empFac.SignIn(initials, password);
+        }
 
         // GET api/<controller>
         public IEnumerable<Employee> Get()

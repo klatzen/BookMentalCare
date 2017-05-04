@@ -41,5 +41,23 @@ namespace BookMentalCareCore.BLL
             return EmpRep.GetEmployees();
         }
 
+        public Employee SignIn(string initials, string password)
+        {
+            IEmployeeFacade empFac = new EmployeeFacade();
+            Employee tempEmp = empFac.FindEmployee(initials);
+            Employee emp = null;
+
+            if (tempEmp != null)
+            {
+                if (PasswordHasher.CheckPassword(tempEmp.SALT, tempEmp.PASSWORD, password))
+                {
+                    emp = tempEmp;
+                }
+            }
+
+
+            return emp;
+        }
+
     }
 }

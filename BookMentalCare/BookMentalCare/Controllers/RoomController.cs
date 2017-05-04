@@ -29,7 +29,7 @@ namespace BookMentalCare.Controllers
         }
 
         // POST: api/Room
-        [HttpGet,HttpPut]
+        [HttpPost,HttpPut]
         public void Post([FromBody]Room room)
         {
             roomFacade.SaveRoom(room);
