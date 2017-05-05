@@ -19,9 +19,11 @@ namespace BookMentalCare.Controllers
             this.empFac = new EmployeeFacade();
         }
 
-        public Employee SignIn(string initials, string password)
+        [Route("api/employee/signIn")]
+        [HttpGet]
+        public Employee SignIn()
         {
-            return empFac.SignIn(initials, password);
+            return empFac.SignIn(Request.Headers.GetValues("Initials").FirstOrDefault(), Request.Headers.GetValues("Password").FirstOrDefault());
         }
 
         // GET api/<controller>
@@ -44,7 +46,6 @@ namespace BookMentalCare.Controllers
         }
 
         // DELETE api/<controller>/5
-        [Route("Employee/{initials}")]
         public void Delete(string initials)
         {
             empFac.DeleteEmplyee(initials);
