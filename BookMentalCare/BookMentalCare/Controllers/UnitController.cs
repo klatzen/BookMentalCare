@@ -18,18 +18,18 @@ namespace BookMentalCare.Controllers
             this.resFac = new RessourceFacade();
         }
 
-        [Route("api/unit/units/{Id}")]
+        [Route("api/unit/units/{id}")]
         [HttpGet]
-        public IEnumerable<Unit> GetUnits(int Id)
+        public IEnumerable<Unit> GetUnits(int id)
         {
-            return resFac.LoadAllUnits(Id);
+            return resFac.LoadAllUnits(id);
         }
 
-        [Route("api/unit/unit/{Id}")]
+        [Route("api/unit/unit/{id}")]
         [HttpGet]
-        public Unit GetUnit(int Id)
+        public Unit GetUnit(int id)
         {
-            return resFac.LoadUnit(Id);
+            return resFac.LoadUnit(id);
         }
 
        
