@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
@@ -25,7 +26,7 @@ namespace BookMentalCareCore.DAL
 
         public Booking FindBooking(int id)
         {
-            return dbContext.Bookings.FirstOrDefault(x => x.ID == id);
+            return dbContext.Bookings.Include(x => x.EMPLOYEES).Include(x => x.RESSOURCES).Include(x => x.ROOM).Include(x => x.PATIENT).FirstOrDefault(x => x.ID == id);
         }
 
         public List<Booking> FindBookings()
