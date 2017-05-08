@@ -43,6 +43,7 @@ namespace BookMentalCareCore.DAL
                     tempE.LNAME = e.LNAME;
                     tempE.PASSWORD = e.PASSWORD;
                     tempE.SALT = e.SALT;
+                    tempE.DEPARTMENTID = e.DEPARTMENTID;
                 }else
                 {
                     dbContext.Employees.Add(e);
