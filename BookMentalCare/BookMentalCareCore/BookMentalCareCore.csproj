@@ -69,7 +69,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BookingFacade.cs" />
     <Compile Include="BLL\DepartmentFacade.cs" />
+    <Compile Include="BLL\IBookingFacade.cs" />
     <Compile Include="BLL\IDepartmentFacade.cs" />
     <Compile Include="BLL\IEmployeeFacade.cs" />
     <Compile Include="BLL\IPatientFacade.cs" />
@@ -81,9 +83,11 @@
     <Compile Include="BLL\PasswordHasher.cs" />
     <Compile Include="BLL\RoomFacade.cs" />
     <Compile Include="DAL\BaseRepository.cs" />
+    <Compile Include="DAL\BookingRepository.cs" />
     <Compile Include="DAL\DBContext.cs" />
     <Compile Include="DAL\DepartmentRepository.cs" />
     <Compile Include="DAL\EmployeeRep.cs" />
+    <Compile Include="DAL\IBookingRepository.cs" />
     <Compile Include="DAL\IDepartmentRepository.cs" />
     <Compile Include="DAL\IEmployeeRep.cs" />
     <Compile Include="DAL\IPatientRepository.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="DAL\PatientRepository.cs" />
     <Compile Include="DAL\RessourceRepository.cs" />
     <Compile Include="DAL\RoomRepository.cs" />
+    <Compile Include="ModelLayer\Booking.cs" />
     <Compile Include="ModelLayer\Department.cs" />
     <Compile Include="ModelLayer\Employee.cs" />
     <Compile Include="ModelLayer\Patient.cs" />
