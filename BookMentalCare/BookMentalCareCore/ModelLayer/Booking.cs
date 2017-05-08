@@ -72,9 +72,9 @@ namespace BookMentalCareCore.ModelLayer
             set { patient = value; }
         }
 
-        private List<Person> employees;
+        private List<Employee> employees;
 
-        public List<Person> EMPLOYEES
+        public List<Employee> EMPLOYEES
         {
             get { return employees; }
             set { employees = value; }

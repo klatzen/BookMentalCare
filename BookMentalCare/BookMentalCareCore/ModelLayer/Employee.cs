@@ -40,5 +40,14 @@ namespace BookMentalCareCore.ModelLayer
             get { return salt; }
             set { salt = value; }
         }
+
+        private List<Booking> bookings;
+
+        public List<Booking> BOOKINGS
+        {
+            get { return bookings; }
+            set { bookings = value; }
+        }
+
     }
 }

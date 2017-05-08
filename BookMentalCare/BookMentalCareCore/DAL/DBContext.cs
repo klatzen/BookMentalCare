@@ -31,6 +31,24 @@ namespace BookMentalCareCore.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Employee>()
+            .HasMany<Booking>(e => e.BOOKINGS)
+            .WithMany(b => b.EMPLOYEES)
+            .Map(cs =>
+            {
+                cs.MapLeftKey("EmployeeRefId");
+                cs.MapRightKey("BookingRefId");
+                cs.ToTable("EmpBook");
+            });
+            modelBuilder.Entity<Unit>()
+            .HasMany<Booking>(u => u.Bookings)
+            .WithMany(b => b.RESSOURCES)
+            .Map(cs =>
+            {
+                cs.MapLeftKey("UnitRefId");
+                cs.MapRightKey("BookingRefId");
+                cs.ToTable("UnitBook");
+            });
         }
     }
 }

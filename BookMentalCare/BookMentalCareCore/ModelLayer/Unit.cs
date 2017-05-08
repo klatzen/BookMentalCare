@@ -15,6 +15,7 @@ namespace BookMentalCareCore.ModelLayer
         public int RessourceId { get; set; }
         [ForeignKey("RessourceId")]
         public Ressource Ressource { get; set; }
+        public List<Booking> Bookings { get; set; }
 
 
     }
