@@ -26,6 +26,8 @@ namespace BookMentalCareCore.DAL
 
         public DbSet<Room> Rooms { get; set; }
 
+        public DbSet<Booking> Bookings { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

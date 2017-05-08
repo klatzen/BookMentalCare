@@ -104,12 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\RessourceController.cs" />
-	<Compile Include="Controllers\UnitController.cs" />
-	<Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
