@@ -11,5 +11,6 @@ namespace BookMentalCareCore.BLL
         bool SaveEmployee(Employee e);
 
         Employee SignIn(string initials, string password);
+        List<Employee> FindAvailEmployees(string startTime, string endTime);
     }
 }

@@ -38,10 +38,20 @@ namespace BookMentalCare.Controllers
             return empFac.FindEmployee(id);
         }
 
+        [Route("api/Employee/GetEmployees/")]
+        [HttpGet]
+        public List<Employee> GetEmps(string startTime, string endTime)
+        {
+            return empFac.FindAvailEmployees(startTime, endTime);
+        }
+
+
         // POST api/<controller>
         [HttpPost, HttpPut]
         public void Post([FromBody]Employee e)
         {
+            e.DEPARTMENTID = e.DEPARTMENT.ID;
+            e.DEPARTMENT = null;
             empFac.SaveEmployee(e);
         }
 

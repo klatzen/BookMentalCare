@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
+using System.Data.SqlClient;
 
 namespace BookMentalCareCore.DAL
 {
@@ -58,5 +59,7 @@ namespace BookMentalCareCore.DAL
                 return false;
             }
         }
+
+
     }
 }

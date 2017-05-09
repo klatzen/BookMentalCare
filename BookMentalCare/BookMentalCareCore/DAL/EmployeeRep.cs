@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using BookMentalCareCore.ModelLayer;
+using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace BookMentalCareCore.DAL
 {
@@ -29,7 +31,7 @@ namespace BookMentalCareCore.DAL
 
         public List<Employee> GetEmployees()
         {
-            return dbContext.Employees.ToList();
+            return dbContext.Employees.Include(x => x.DEPARTMENT).ToList();
         }
 
         public bool SaveEmployee(Employee e)
@@ -58,6 +60,16 @@ namespace BookMentalCareCore.DAL
                 return false;
             }
 
+        }
+
+
+        public List<Employee> GetAvailableEmps(string startTime, string endTime)
+        {
+            var s = dbContext.Employees.SqlQuery("select * from Employee e inner join Department d on d.ID = e.DEPARTMENTID where e.ID not in (select EmployeeRefId from EmpBook eb, Booking b where eb.BookingRefId = b.ID AND b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime) and d.ID = e.DEPARTMENTID",
+                new SqlParameter("startTime", startTime),
+                new SqlParameter("endTime", endTime))
+                .ToList();
+            return s;
         }
     }
 }
