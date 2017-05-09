@@ -37,7 +37,7 @@ namespace BookMentalCare.Controllers
             bookFac.SaveBooking(b);
         }
 
-        [Route("api/Booking/GetEmployees/{startTime}/{endTime}")]
+        [Route("api/Booking/GetEmployees/")]
         [HttpGet]
         public List<Employee> GetEmps(string startTime, string endTime)
         {
