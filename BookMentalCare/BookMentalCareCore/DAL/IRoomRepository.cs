@@ -16,5 +16,7 @@ namespace BookMentalCareCore.DAL
         Room FindRoom(int id);
 
         List<Room> FindRooms();
+
+        List<Room> getAvailableRoom(string startTime, string endTime);
     }
 }

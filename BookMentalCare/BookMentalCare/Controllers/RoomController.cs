@@ -40,5 +40,11 @@ namespace BookMentalCare.Controllers
         {
             roomFacade.DeleteRoom(id);
         }
+        [HttpGet]
+
+        public List<Room> getAvailableRoom(string startTime, string endTime)
+        {
+            return roomFacade.getAvailableRoom(startTime, endTime);
+        }
     }
 }

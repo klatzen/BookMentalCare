@@ -16,5 +16,7 @@ namespace BookMentalCareCore.BLL
         Room FindRoom(int id);
 
         List<Room> FindRooms();
+
+        List<Room> getAvailableRoom(string startTime, string endTime);
     }
 }

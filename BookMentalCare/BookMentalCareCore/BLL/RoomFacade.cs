@@ -30,6 +30,11 @@ namespace BookMentalCareCore.BLL
             return roomRep.FindRooms();
         }
 
+        public List<Room> getAvailableRoom(string startTime, string endTime)
+        {
+            return roomRep.getAvailableRoom(startTime, endTime);
+        }
+
         public bool SaveRoom(Room r)
         {
             return roomRep.SaveRoom(r);
