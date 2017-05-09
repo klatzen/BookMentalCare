@@ -65,7 +65,7 @@ namespace BookMentalCareCore.DAL
 
         public List<Employee> GetAvailableEmps(string startTime, string endTime)
         {
-            var s = dbContext.Employees.SqlQuery("select * from Employee e inner join Department d on d.ID = e.DEPARTMENTID where e.ID not in (select EmployeeRefId from EmpBook eb, Booking b where eb.BookingRefId = b.ID AND b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime) and d.ID = e.DEPARTMENTID",
+            var s = dbContext.Employees.SqlQuery("select * from Employee e where e.ID not in (select EmployeeRefId from EmpBook eb, Booking b where eb.BookingRefId = b.ID AND b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime)",
                 new SqlParameter("startTime", startTime),
                 new SqlParameter("endTime", endTime))
                 .ToList();
