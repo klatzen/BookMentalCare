@@ -16,5 +16,7 @@ namespace BookMentalCareCore.BLL
         Booking FindBooking(int id);
 
         List<Booking> FindBookings();
+
+        List<Employee> FindEmployees(string startTime, string endTime);
     }
 }

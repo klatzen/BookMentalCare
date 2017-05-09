@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BookMentalCareCore.ModelLayer;
+using System.Data.Entity;
 
 namespace BookMentalCareCore.DAL
 {
@@ -29,7 +30,7 @@ namespace BookMentalCareCore.DAL
 
         public List<Employee> GetEmployees()
         {
-            return dbContext.Employees.ToList();
+            return dbContext.Employees.Include(x => x.DEPARTMENT).ToList();
         }
 
         public bool SaveEmployee(Employee e)

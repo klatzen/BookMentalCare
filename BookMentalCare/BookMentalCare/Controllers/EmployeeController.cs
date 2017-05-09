@@ -42,6 +42,8 @@ namespace BookMentalCare.Controllers
         [HttpPost, HttpPut]
         public void Post([FromBody]Employee e)
         {
+            e.DEPARTMENTID = e.DEPARTMENT.ID;
+            e.DEPARTMENT = null;
             empFac.SaveEmployee(e);
         }
 
