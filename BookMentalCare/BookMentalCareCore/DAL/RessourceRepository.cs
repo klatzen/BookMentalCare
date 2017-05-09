@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
+using System.Data.Entity;
 
 namespace BookMentalCareCore.DAL
 {
     public class RessourceRepository : BaseRepository, IRessourceRepository
     {
-        public List<Unit> LoadAllAvalibleUnits(string startDate, string endDate, int ressourceID)
+        public List<Unit> LoadAllAvalibleUnits(string startDate, string endDate)
         {
-            return dbContext.Units.SqlQuery("select * from Unit where id in (select UnitRefId from Unit u, UnitBook ub, booking b where ub.BookingRefId = b.ID AND b.STARTTIME between @p0 and @p1 And b.ENDTIME between @p0 and @p1 and u.RessourceId = @p2)", startDate, endDate, ressourceID).ToList();
+            return dbContext.Units.SqlQuery("select * from Unit where id not in (select UnitRefId from UnitBook ub, booking b where ub.BookingRefId = b.ID AND b.STARTTIME between @p0 and @p1 And b.ENDTIME between @p0 and @p1)", startDate, endDate).ToList();
         }
 
         public List<Ressource> LoadAllRessources()
