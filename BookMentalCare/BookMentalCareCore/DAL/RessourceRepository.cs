@@ -9,6 +9,11 @@ namespace BookMentalCareCore.DAL
 {
     public class RessourceRepository : BaseRepository, IRessourceRepository
     {
+        public List<Unit> LoadAllAvalibleUnits(string startDate, string endDate, int ressourceID)
+        {
+            return dbContext.Units.SqlQuery("select * from Unit where id in (select UnitRefId from Unit u, UnitBook ub, booking b where ub.BookingRefId = b.ID AND b.STARTTIME between @p0 and @p1 And b.ENDTIME between @p0 and @p1 and u.RessourceId = @p2)", startDate, endDate, ressourceID).ToList();
+        }
+
         public List<Ressource> LoadAllRessources()
         {
             return dbContext.Ressources.ToList();
@@ -22,7 +27,7 @@ namespace BookMentalCareCore.DAL
         public Ressource LoadRessource(int id)
         {
             return dbContext.Ressources.FirstOrDefault(x => x.Id == id);
-            
+
         }
 
         public Unit LoadUnit(int id)
@@ -33,7 +38,8 @@ namespace BookMentalCareCore.DAL
         public bool RemoveRessource(int id)
         {
             Ressource res = LoadRessource(id);
-                if (res != null) {
+            if (res != null)
+            {
                 dbContext.Ressources.Remove(res);
                 dbContext.SaveChanges();
                 return true;
@@ -64,29 +70,33 @@ namespace BookMentalCareCore.DAL
 
         public bool SaveRessource(Ressource ressource)
         {
-            try {
+            try
+            {
                 if (ressource.Id > 0)
                 {
                     Ressource TempRes = LoadRessource(ressource.Id);
                     TempRes.Name = ressource.Name;
                 }
-                else {
+                else
+                {
                     dbContext.Ressources.Add(ressource);
                 }
                 dbContext.SaveChanges();
                 return true;
             }
-            catch {
+            catch
+            {
                 return false;
             }
-            
+
         }
 
         public bool SaveUnit(Unit unit)
         {
             try
             {
-                if (unit.Id > 0) {
+                if (unit.Id > 0)
+                {
                     Unit tempUnit = LoadUnit(unit.Id);
                     tempUnit.SerialNo = unit.SerialNo;
                 }
@@ -101,8 +111,8 @@ namespace BookMentalCareCore.DAL
             {
                 return false;
             }
-       
-            
+
+
         }
     }
 }

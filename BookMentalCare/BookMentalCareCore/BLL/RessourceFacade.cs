@@ -29,6 +29,11 @@ namespace BookMentalCareCore.BLL
             return resRep.LoadAllUnits(resId);
         }
 
+        public List<Unit> LoadAvalibleUnits(string startDate, string endDate, int ressourceId)
+        {
+            return resRep.LoadAllAvalibleUnits(startDate, endDate, ressourceId);
+        }
+
         public Ressource LoadRessource(int id)
         {
             return resRep.LoadRessource(id);

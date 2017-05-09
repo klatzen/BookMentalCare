@@ -24,6 +24,11 @@ namespace BookMentalCare.Controllers
             return resFac.LoadAllRessources();
         }
 
+        public IEnumerable<Unit> Get(string startDate, string endDate, int ressourceId)
+        {
+            return resFac.LoadAvalibleUnits(startDate, endDate, ressourceId);
+        }
+
         [HttpGet]
         public Ressource GetRessource(int id)
         {

@@ -17,7 +17,8 @@ namespace BookMentalCareCore.DAL
         List<Unit> LoadAllUnits(int resId);
         bool RemoveUnit(int id);
         bool SaveUnit(Unit unit);
-        
+
+        List<Unit> LoadAllAvalibleUnits(string startDate, string endDate, int ressourceID);
 
     }
 }
