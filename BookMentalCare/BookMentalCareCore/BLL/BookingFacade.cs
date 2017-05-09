@@ -12,6 +12,7 @@ namespace BookMentalCareCore.BLL
     {
         private IBookingRepository bookRep;
         private IEmployeeFacade empfacade;
+        private IDepartmentFacade depfacade;
 
         public BookingFacade()
         {
@@ -35,7 +36,13 @@ namespace BookMentalCareCore.BLL
 
         public List<Employee> FindEmployees(string startTime, string endTime)
         {
-            return bookRep.AvailableEmps(startTime, endTime);
+            var depFacade = new DepartmentFacade();
+            var availemps = bookRep.AvailableEmps(startTime, endTime);
+            for (int i = 0; i < availemps.Count; i++)
+            {
+                availemps[i].DEPARTMENT = depFacade.FindDepartment(availemps[i].DEPARTMENTID);
+            }
+            return availemps;
             /*empfacade = new EmployeeFacade();
             var emps = empfacade.FindEmployees();
             for (int i = 0; i < emps.Count; i++)
