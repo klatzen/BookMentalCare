@@ -11,6 +11,7 @@ namespace BookMentalCareCore.BLL
     public class EmployeeFacade : IEmployeeFacade
     {
         private IEmployeeRep EmpRep;
+        private IDepartmentFacade depFacade;
         public EmployeeFacade()
         {
             this.EmpRep = new EmployeeRep();
@@ -59,5 +60,15 @@ namespace BookMentalCareCore.BLL
             return emp;
         }
 
+        public List<Employee> FindAvailEmployees(string startTime, string endTime)
+        {
+            depFacade = new DepartmentFacade();
+            var availemps = EmpRep.GetAvailableEmps(startTime, endTime);
+            for (int i = 0; i < availemps.Count; i++)
+            {
+                availemps[i].DEPARTMENT = depFacade.FindDepartment(availemps[i].DEPARTMENTID);
+            }
+            return availemps;
+        }
     }
 }
