@@ -60,18 +60,6 @@ namespace BookMentalCareCore.DAL
             }
         }
 
-        public List<Employee> AvailableEmps(string startTime, string endTime)
-        {
 
-            var s = dbContext.Employees.SqlQuery("select * from Employee e inner join Department d on d.ID = e.DEPARTMENTID where e.ID not in (select EmployeeRefId from EmpBook eb, Booking b where eb.BookingRefId = b.ID AND b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime) and d.ID = e.DEPARTMENTID",
-                new SqlParameter("startTime",startTime),
-                new SqlParameter("endTime",endTime))
-                .ToList();
-            return s;
-            /*return dbContext.Bookings.Include(e => e.EMPLOYEES).Where(x => Convert.ToDateTime(x.STARTTIME) < Convert.ToDateTime(endTime) 
-            && Convert.ToDateTime(x.ENDTIME) > Convert.ToDateTime(startTime)).Select(e => e.EMPLOYEES).ToList()[0];*/
-            
-
-        }
     }
 }
