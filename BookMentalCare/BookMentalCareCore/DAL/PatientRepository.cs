@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace BookMentalCareCore.DAL
 {
@@ -35,6 +36,15 @@ namespace BookMentalCareCore.DAL
         public List<Patient> FindPatients()
         {
             return dbContext.Patients.Include(x=>x.DEPARTMENT).ToList();
+        }
+
+        public List<Patient> GetAvailablePatients(string startTime, string endTime)
+        {
+            var s = dbContext.Patients.SqlQuery("select * from Patient p where p.ID not in (select PATIENT_ID from Booking b where b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime)",
+                new SqlParameter("startTime", startTime),
+                new SqlParameter("endTime", endTime))
+                .ToList();
+            return s;
         }
 
         public bool SavePatient(Patient p)

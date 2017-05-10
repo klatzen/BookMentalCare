@@ -17,6 +17,7 @@ namespace BookMentalCareCore.BLL
         Patient FindPatient(int id);
 
         List<Patient> FindPatients();
+        List<Patient> FindAvailPatients(string startTime, string endTime);
 
     }
 }

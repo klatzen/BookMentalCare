@@ -11,6 +11,7 @@ namespace BookMentalCareCore.BLL
     public class PatientFacade : IPatientFacade
     {
         private IPatientRepository patientRep;
+        private IDepartmentFacade depFacade;
 
         public PatientFacade()
         {
@@ -20,6 +21,17 @@ namespace BookMentalCareCore.BLL
         public bool DeletePatient(int id)
         {
             return patientRep.DeletePatient(id);
+        }
+
+        public List<Patient> FindAvailPatients(string startTime, string endTime)
+        {
+            depFacade = new DepartmentFacade();
+            var availPatients = patientRep.GetAvailablePatients(startTime, endTime);
+            for (int i = 0; i < availPatients.Count; i++)
+            {
+                availPatients[i].DEPARTMENT = depFacade.FindDepartment(availPatients[i].DEPARTMENTID);
+            }
+            return availPatients;
         }
 
         public Patient FindPatient(int id)

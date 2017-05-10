@@ -16,6 +16,7 @@ namespace BookMentalCareCore.DAL
         Patient FindPatient(int id);
 
         List<Patient> FindPatients();
+        List<Patient> GetAvailablePatients(string startTime, string endTime);
 
     }
 }

@@ -24,6 +24,13 @@ namespace BookMentalCare.Controllers
             return patientFac.FindPatients();
         }
 
+        [Route("api/Patient/GetPatients/")]
+        [HttpGet]
+        public List<Patient> GetPatients(string startTime, string endTime)
+        {
+            return patientFac.FindAvailPatients(startTime, endTime);
+        }
+
         // GET api/<controller>/5
         public Patient Get(int id)
         {
