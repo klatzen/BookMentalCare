@@ -11,6 +11,7 @@ namespace BookMentalCareCore.BLL
     public class RoomFacade : IRoomFacade
     {
         private IRoomRepository roomRep;
+        private IDepartmentFacade depFacade;
         public RoomFacade()
         {
             roomRep = new RoomRepository();
@@ -32,7 +33,14 @@ namespace BookMentalCareCore.BLL
 
         public List<Room> getAvailableRoom(string startTime, string endTime)
         {
-            return roomRep.getAvailableRoom(startTime, endTime);
+            depFacade = new DepartmentFacade();
+
+            List<Room> availRooms = roomRep.getAvailableRoom(startTime, endTime);
+            for (int i = 0; i < availRooms.Count; i++)
+            {
+                availRooms[i].DEPARTMENT = depFacade.FindDepartment(availRooms[i].DEPARTMENTID);
+            }
+            return availRooms;
         }
 
         public bool SaveRoom(Room r)

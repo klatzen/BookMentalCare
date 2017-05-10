@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
+using System.Data.Entity;
 
 namespace BookMentalCareCore.DAL
 {
@@ -28,12 +29,12 @@ namespace BookMentalCareCore.DAL
 
         public Patient FindPatient(int id)
         {
-            return dbContext.Patients.FirstOrDefault(x => x.ID == id);
+            return dbContext.Patients.Include(x=> x.DEPARTMENT).FirstOrDefault(x => x.ID == id);
         }
 
         public List<Patient> FindPatients()
         {
-            return dbContext.Patients.ToList();
+            return dbContext.Patients.Include(x=>x.DEPARTMENT).ToList();
         }
 
         public bool SavePatient(Patient p)

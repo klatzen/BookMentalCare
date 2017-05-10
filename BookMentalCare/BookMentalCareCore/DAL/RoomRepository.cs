@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
 using System.Data.SqlClient;
+using System.Data.Entity;
 
 namespace BookMentalCareCore.DAL
 {
@@ -27,12 +28,12 @@ namespace BookMentalCareCore.DAL
 
         public Room FindRoom(int id)
         {
-            return dbContext.Rooms.FirstOrDefault(x => x.ID == id);
+            return dbContext.Rooms.Include(x=> x.DEPARTMENT).FirstOrDefault(x => x.ID == id);
         }
 
         public List<Room> FindRooms()
         {
-            return dbContext.Rooms.ToList();
+            return dbContext.Rooms.Include(x => x.DEPARTMENT).ToList();
         }
 
         public List<Room> getAvailableRoom(string startTime, string endTime)

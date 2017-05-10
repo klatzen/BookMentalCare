@@ -33,6 +33,22 @@ namespace BookMentalCareCore.ModelLayer
             set { roomNo = value; }
         }
 
+        [ForeignKey("departmentId")]
+        private Department department;
+
+        public Department DEPARTMENT
+        {
+            get { return department; }
+            set { department = value; }
+        }
+
+        private int departmentId;
+
+        public int DEPARTMENTID
+        {
+            get { return departmentId; }
+            set { departmentId = value; }
+        }
 
     }
 }
