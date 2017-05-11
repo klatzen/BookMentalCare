@@ -19,7 +19,7 @@ namespace BookMentalCareCore.BLL
         bool RemoveUnit(int id);
         bool SaveUnit(Unit unit);
 
-        List<Unit> LoadAvalibleUnits(string startDate, string endDate);
+        List<Ressource> LoadAvalibleUnits(string startDate, string endDate);
 
     }
 }
