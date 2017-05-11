@@ -1,6 +1,7 @@
 ﻿using BookMentalCareCore.ModelLayer;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
@@ -50,5 +51,6 @@ namespace BookMentalCareCore.DAL
                 cs.ToTable("UnitBook");
             });
         }
+
     }
 }
