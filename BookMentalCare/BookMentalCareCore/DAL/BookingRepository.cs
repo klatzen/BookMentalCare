@@ -41,14 +41,28 @@ namespace BookMentalCareCore.DAL
             {
                 if (b.ID > 0)
                 {
-                    Booking tempB = FindBooking(b.ID);
-                    tempB.EMPLOYEES = b.EMPLOYEES;
-                    tempB.ROOM = b.ROOM;
-                    tempB.RESSOURCES = b.RESSOURCES;
+                    //Skal også opdateres til at køre manuelt
+                    //Booking tempB = FindBooking(b.ID);
+                    //tempB.EMPLOYEES = b.EMPLOYEES;
+                    //tempB.ROOM = b.ROOM;
+                    //tempB.RESSOURCES = b.RESSOURCES;
                 }
                 else
                 {
                     dbContext.Bookings.Add(b);
+
+                    dbContext.Entry(b.PATIENT).State = EntityState.Detached;
+                    dbContext.Entry(b.ROOM).State = EntityState.Detached;
+
+                    foreach (Unit r in b.RESSOURCES)
+                    {
+                        dbContext.Entry(r).State = EntityState.Detached;
+                    }
+
+                    foreach (Employee e in b.EMPLOYEES)
+                    {
+                        dbContext.Entry(e).State = EntityState.Detached;
+                    }
                 }
 
                 dbContext.SaveChanges();

@@ -34,6 +34,7 @@ namespace BookMentalCare.Controllers
         [HttpPost, HttpPut]
         public void Post([FromBody]Booking b)
         {
+            b.DATE = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             bookFac.SaveBooking(b);
         }
 
