@@ -28,7 +28,6 @@ namespace BookMentalCareCore.DAL
         {
             return dbContext.Employees.FirstOrDefault(x => x.INITIALS.Equals(initials));
         }
-
         public List<Employee> GetEmployees()
         {
             return dbContext.Employees.Include(x => x.DEPARTMENT).ToList();

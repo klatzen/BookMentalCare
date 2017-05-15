@@ -17,5 +17,7 @@ namespace BookMentalCareCore.BLL
 
         List<Booking> FindBookings();
 
+        List<Booking> FindEmpBookings(int ID);
+
     }
 }

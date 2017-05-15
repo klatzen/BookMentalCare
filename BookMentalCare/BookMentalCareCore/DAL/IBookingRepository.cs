@@ -16,5 +16,7 @@ namespace BookMentalCareCore.DAL
         Booking FindBooking(int id);
 
         List<Booking> FindBookings();
+
+        List<Booking> FindEmpBookings(int ID);
     }
 }

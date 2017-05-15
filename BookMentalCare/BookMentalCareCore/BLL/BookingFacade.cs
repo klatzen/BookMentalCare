@@ -32,6 +32,11 @@ namespace BookMentalCareCore.BLL
             return bookRep.FindBookings();
         }
 
+        public List<Booking> FindEmpBookings(int ID)
+        {
+            return bookRep.FindEmpBookings(ID);
+        }
+
         public bool SaveBooking(Booking b)
         {
             return bookRep.SaveBooking(b);

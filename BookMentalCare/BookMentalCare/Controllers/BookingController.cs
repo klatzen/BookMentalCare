@@ -43,5 +43,12 @@ namespace BookMentalCare.Controllers
         {
             bookFac.DeleteBooking(id);
         }
+
+        [Route("api/booking/getEmpBooking/{id}")]
+        [HttpGet]
+        public List<Booking> GetEmpBookings(int id)
+        {
+            return bookFac.FindEmpBookings(id);
+        }
     }
 }

@@ -29,6 +29,17 @@ namespace BookMentalCareCore.DAL
         {
             return dbContext.Bookings.Include(x => x.EMPLOYEES).Include(x => x.RESSOURCES).Include(x => x.ROOM).Include(x => x.PATIENT).FirstOrDefault(x => x.ID == id);
         }
+        public List<Booking> FindEmpBookings(int ID)
+        {
+            List<Booking> bookings = new List<Booking>();
+            var list = dbContext.Database.SqlQuery<int>("select BookingRefId from EmpBook where EmployeeRefId = @p0", ID).ToList();
+            
+            foreach(var item in list)
+            {
+                bookings.Add(FindBooking(item));
+            }
+            return bookings;
+        }
 
         public List<Booking> FindBookings()
         {
@@ -41,37 +52,49 @@ namespace BookMentalCareCore.DAL
             {
                 List<Employee> tempEmps = b.EMPLOYEES;
                 List<Unit> tempRes = b.RESSOURCES;
+                b.PATIENTID = b.PATIENT.ID;
+                b.PATIENT = null;
+                b.ROOMID = b.ROOM.ID;
+                b.ROOM = null;
+
+                b.EMPLOYEES = null;
+                b.RESSOURCES = null;
                 if (b.ID > 0)
                 {
-                    //Skal også opdateres til at køre manuelt
-                    //Booking tempB = FindBooking(b.ID);
-                    //tempB.EMPLOYEES = b.EMPLOYEES;
-                    //tempB.ROOM = b.ROOM;
-                    //tempB.RESSOURCES = b.RESSOURCES;
+                    deleteResAndEmp(b.ID);
+                    
+                    Booking tempB = FindBooking(b.ID);
+                    tempB.DESCRIPTION = b.DESCRIPTION;
+                    
                 }
                 else
                 {
 
-                    b.PATIENTID = b.PATIENT.ID;
-                    b.PATIENT = null;
-                    b.ROOMID = b.ROOM.ID;
-                    b.ROOM = null;
-
-                    b.EMPLOYEES = null;
-                    b.RESSOURCES = null;
-
-
                     dbContext.Bookings.Add(b);
+                    
                 }
-
                 dbContext.SaveChanges();
+                return insertEmpsAndRes(b.ID, tempEmps, tempRes);
 
-                int id = b.ID;
-
-                return insertEmpsAndRes(id, tempEmps, tempRes);
             }
             catch (Exception)
             {
+                return false;
+            }
+        }
+
+        private bool deleteResAndEmp(int ID)
+        {
+            try
+            {
+                dbContext.Database.ExecuteSqlCommand("delete from UnitBook where BookingRefId = @p0",ID);
+                dbContext.Database.ExecuteSqlCommand("delete from EmpBook where BookingRefId = @p0", ID);
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
                 return false;
             }
         }
