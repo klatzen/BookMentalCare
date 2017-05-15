@@ -27,7 +27,13 @@ namespace BookMentalCareCore.DAL
 
         public Booking FindBooking(int id)
         {
-            return dbContext.Bookings.Include(x => x.EMPLOYEES).Include(x => x.RESSOURCES).Include(x => x.ROOM).Include(x => x.PATIENT).FirstOrDefault(x => x.ID == id);
+            RessourceRepository resRepo = new RessourceRepository();
+            Booking b = dbContext.Bookings.Include(x => x.EMPLOYEES).Include(x => x.RESSOURCES).Include(x => x.ROOM).Include(x => x.PATIENT).FirstOrDefault(x => x.ID == id);
+            foreach (var item in b.RESSOURCES)
+            {
+                item.Ressource = resRepo.LoadRessource(item.RessourceId);
+            }
+            return b;
         }
         public List<Booking> FindEmpBookings(int ID)
         {
