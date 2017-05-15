@@ -39,6 +39,8 @@ namespace BookMentalCareCore.DAL
         {
             try
             {
+                List<Employee> tempEmps = b.EMPLOYEES;
+                List<Unit> tempRes = b.RESSOURCES;
                 if (b.ID > 0)
                 {
                     //Skal også opdateres til at køre manuelt
@@ -49,20 +51,42 @@ namespace BookMentalCareCore.DAL
                 }
                 else
                 {
+
+                    b.PATIENTID = b.PATIENT.ID;
+                    b.PATIENT = null;
+                    b.ROOMID = b.ROOM.ID;
+                    b.ROOM = null;
+
+                    b.EMPLOYEES = null;
+                    b.RESSOURCES = null;
+
+
                     dbContext.Bookings.Add(b);
+                }
 
-                    dbContext.Entry(b.PATIENT).State = EntityState.Detached;
-                    dbContext.Entry(b.ROOM).State = EntityState.Detached;
+                dbContext.SaveChanges();
 
-                    foreach (Unit r in b.RESSOURCES)
-                    {
-                        dbContext.Entry(r).State = EntityState.Detached;
-                    }
+                int id = b.ID;
 
-                    foreach (Employee e in b.EMPLOYEES)
-                    {
-                        dbContext.Entry(e).State = EntityState.Detached;
-                    }
+                return insertEmpsAndRes(id, tempEmps, tempRes);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private bool insertEmpsAndRes(int bookingID, List<Employee> emps, List<Unit> res)
+        {
+            try
+            {
+                foreach(Employee e in emps)
+                {
+                    dbContext.Database.ExecuteSqlCommand("insert into EmpBook values(@p0, @p1)", e.ID, bookingID);
+                }
+                foreach (Unit u in res)
+                {
+                    dbContext.Database.ExecuteSqlCommand("insert into UnitBook values(@p0, @p1)", u.Id, bookingID);
                 }
 
                 dbContext.SaveChanges();
@@ -73,7 +97,5 @@ namespace BookMentalCareCore.DAL
                 return false;
             }
         }
-
-
     }
 }

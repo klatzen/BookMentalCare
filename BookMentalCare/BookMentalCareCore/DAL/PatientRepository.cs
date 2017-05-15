@@ -40,7 +40,7 @@ namespace BookMentalCareCore.DAL
 
         public List<Patient> GetAvailablePatients(string startTime, string endTime)
         {
-            var s = dbContext.Patients.SqlQuery("select * from Patient p where p.ID not in (select PATIENT_ID from Booking b where b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime)",
+            var s = dbContext.Patients.SqlQuery("select * from Patient p where p.ID not in (select PATIENTID from Booking b where b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime)",
                 new SqlParameter("startTime", startTime),
                 new SqlParameter("endTime", endTime))
                 .ToList();

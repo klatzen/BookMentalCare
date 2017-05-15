@@ -38,7 +38,7 @@ namespace BookMentalCareCore.DAL
 
         public List<Room> getAvailableRoom(string startTime, string endTime)
         {
-            return dbContext.Rooms.SqlQuery("select * from Room r where id not in(select ROOM_ID from Booking b where b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime)",
+            return dbContext.Rooms.SqlQuery("select * from Room r where id not in(select ROOMID from Booking b where b.STARTTIME between @startTime and @endTime and b.ENDTIME between @startTime and @endTime)",
                 new SqlParameter("startTime", startTime),
                 new SqlParameter("endTime", endTime))
                 .ToList();

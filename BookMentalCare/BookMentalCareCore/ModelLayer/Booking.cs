@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,15 @@ namespace BookMentalCareCore.ModelLayer
             set { endTime = value; }
         }
 
+        private int roomID;
+
+        public int ROOMID
+        {
+            get { return roomID; }
+            set { roomID = value; }
+        }
+
+        [ForeignKey("roomID")]
         private Room room;
 
         public Room ROOM
@@ -64,6 +74,15 @@ namespace BookMentalCareCore.ModelLayer
             set { ressources = value; }
         }
 
+        private int patientID;
+
+        public int PATIENTID
+        {
+            get { return patientID; }
+            set { patientID = value; }
+        }
+
+        [ForeignKey("patientID")]
         private Patient patient;
 
         public Patient PATIENT
@@ -79,14 +98,5 @@ namespace BookMentalCareCore.ModelLayer
             get { return employees; }
             set { employees = value; }
         }
-
-
-
-
-
-
-
-
-
     }
 }

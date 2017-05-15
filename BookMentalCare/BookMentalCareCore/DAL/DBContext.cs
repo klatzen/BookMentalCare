@@ -31,7 +31,10 @@ namespace BookMentalCareCore.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Entity<Employee>()
             .HasMany<Booking>(e => e.BOOKINGS)
             .WithMany(b => b.EMPLOYEES)
