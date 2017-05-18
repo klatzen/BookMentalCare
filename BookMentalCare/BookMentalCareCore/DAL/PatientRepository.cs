@@ -57,9 +57,12 @@ namespace BookMentalCareCore.DAL
                     tempP.FNAME = p.FNAME;
                     tempP.LNAME = p.LNAME;
                     tempP.MEDREGNO = p.MEDREGNO;
+                    tempP.DEPARTMENT = null;
                 }
                 else
                 {
+                    p.DEPARTMENTID = p.DEPARTMENT.ID;
+                    p.DEPARTMENT = null;
                     dbContext.Patients.Add(p);
                 }
                 dbContext.SaveChanges();

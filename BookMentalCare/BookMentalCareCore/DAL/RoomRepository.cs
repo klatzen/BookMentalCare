@@ -53,9 +53,12 @@ namespace BookMentalCareCore.DAL
                     Room tempRoom = FindRoom(r.ID);
                     tempRoom.TYPE = r.TYPE;
                     tempRoom.ROOMNO = r.ROOMNO;
+                    tempRoom.DEPARTMENT = null;
                 }
                 else
                 {
+                    r.DEPARTMENTID = r.DEPARTMENT.ID;
+                    r.DEPARTMENT = null;
                     dbContext.Rooms.Add(r);
                 }
                 dbContext.SaveChanges();

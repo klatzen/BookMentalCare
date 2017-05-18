@@ -77,6 +77,7 @@ namespace BookMentalCareCore.DAL
                 {
                     Ressource TempRes = LoadRessource(ressource.Id);
                     TempRes.Name = ressource.Name;
+                    TempRes.units = null;
                 }
                 else
                 {
@@ -100,9 +101,12 @@ namespace BookMentalCareCore.DAL
                 {
                     Unit tempUnit = LoadUnit(unit.Id);
                     tempUnit.SerialNo = unit.SerialNo;
+                    tempUnit.Ressource = null;
                 }
                 else
                 {
+                    unit.RessourceId = unit.Ressource.Id;
+                    unit.Ressource = null;
                     dbContext.Units.Add(unit);
                 }
                 dbContext.SaveChanges();

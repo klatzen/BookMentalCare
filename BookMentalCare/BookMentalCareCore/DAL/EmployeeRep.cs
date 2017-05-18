@@ -26,7 +26,7 @@ namespace BookMentalCareCore.DAL
 
         public Employee FindEmployee(string initials)
         {
-            return dbContext.Employees.FirstOrDefault(x => x.INITIALS.Equals(initials));
+            return dbContext.Employees.Include(x => x.DEPARTMENT).FirstOrDefault(x => x.INITIALS.Equals(initials));
         }
         public List<Employee> GetEmployees()
         {
@@ -45,8 +45,13 @@ namespace BookMentalCareCore.DAL
                     tempE.PASSWORD = e.PASSWORD;
                     tempE.SALT = e.SALT;
                     tempE.DEPARTMENTID = e.DEPARTMENTID;
+                    tempE.DEPARTMENT = null;
+                    tempE.BOOKINGS = null;
                 }else
                 {
+                    e.BOOKINGS = null;
+                    e.DEPARTMENTID = e.DEPARTMENT.ID;
+                    e.DEPARTMENT = null;
                     dbContext.Employees.Add(e);
                 }
 
