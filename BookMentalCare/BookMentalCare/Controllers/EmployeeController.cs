@@ -33,9 +33,11 @@ namespace BookMentalCare.Controllers
         }
 
         // GET api/<controller>/5
-        public Employee Get(string id)
+        [HttpGet]
+        [Route("api/employee/{initials}")]
+        public Employee Get(string initials)
         {
-            return empFac.FindEmployee(id);
+            return empFac.FindEmployee(initials);
         }
 
         [Route("api/Employee/GetEmployees/")]
@@ -56,6 +58,8 @@ namespace BookMentalCare.Controllers
         }
 
         // DELETE api/<controller>/5
+        [HttpDelete]
+        [Route("api/employee/{initials}")]
         public void Delete(string initials)
         {
             empFac.DeleteEmplyee(initials);

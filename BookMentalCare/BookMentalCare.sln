@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMentalCare", "BookMenta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMentalCareCore", "BookMentalCareCore\BookMentalCareCore.csproj", "{067B894F-50F2-46B8-B582-C038749714B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{CE074C82-97E7-4175-A314-E060E9429DA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{067B894F-50F2-46B8-B582-C038749714B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{067B894F-50F2-46B8-B582-C038749714B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{067B894F-50F2-46B8-B582-C038749714B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE074C82-97E7-4175-A314-E060E9429DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE074C82-97E7-4175-A314-E060E9429DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE074C82-97E7-4175-A314-E060E9429DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE074C82-97E7-4175-A314-E060E9429DA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
