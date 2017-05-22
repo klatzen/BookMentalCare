@@ -23,8 +23,25 @@ namespace BookMentalCareCore.BLL
 
             e.PASSWORD = pH.Hash;
             e.SALT = pH.Salt;
+            e.INITIALS = GenerateInitials(e.FNAME, e.LNAME, 0);
 
             return EmpRep.SaveEmployee(e);
+        }
+
+        private string GenerateInitials(string fName, string lName, int count)
+        {
+            string initials;
+
+            initials = fName.Substring(0, 2).ToUpper() + lName.Substring(0 + count, 2).ToUpper();
+
+            if(FindEmployee(initials) != null)
+            {
+                return GenerateInitials(fName, lName, 1);
+            }
+            else
+            {
+                return initials;
+            }
         }
 
         public bool DeleteEmplyee(string initials)
