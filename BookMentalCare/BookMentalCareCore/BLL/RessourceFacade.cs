@@ -1,9 +1,5 @@
 ﻿using BookMentalCareCore.DAL;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
 
 namespace BookMentalCareCore.BLL
@@ -39,13 +35,14 @@ namespace BookMentalCareCore.BLL
 
                 Ressource aRes = avalRes.Find(x => x.Id == u.RessourceId);
 
-                if(aRes == null)
+                if (aRes == null)
                 {
                     Ressource tempR = LoadRessource(u.RessourceId);
                     tempR.units = new List<Unit>();
                     tempR.units.Add(u);
                     avalRes.Add(tempR);
-                }else
+                }
+                else
                 {
                     aRes.units.Add(u);
                 }

@@ -1,10 +1,6 @@
 ﻿using BookMentalCareCore.DAL;
 using BookMentalCareCore.ModelLayer;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookMentalCareCore.BLL
 {
@@ -34,7 +30,7 @@ namespace BookMentalCareCore.BLL
 
             initials = fName.Substring(0, 2).ToUpper() + lName.Substring(0 + count, 2).ToUpper();
 
-            if(FindEmployee(initials) != null)
+            if (FindEmployee(initials) != null)
             {
                 return GenerateInitials(fName, lName, 1);
             }

@@ -1,12 +1,6 @@
 ﻿using BookMentalCareCore.ModelLayer;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookMentalCareCore.DAL
 {
@@ -18,12 +12,12 @@ namespace BookMentalCareCore.DAL
         }
 
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Ressource> Ressources { get; set;  }
+        public DbSet<Ressource> Ressources { get; set; }
         public DbSet<Unit> Units { get; set; }
 
         public DbSet<Patient> Patients { get; set; }
 
-        public DbSet<Department> Departments { get; set;}
+        public DbSet<Department> Departments { get; set; }
 
         public DbSet<Room> Rooms { get; set; }
 

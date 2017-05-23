@@ -47,7 +47,8 @@ namespace BookMentalCareCore.DAL
                     tempE.DEPARTMENTID = e.DEPARTMENTID;
                     tempE.DEPARTMENT = null;
                     tempE.BOOKINGS = null;
-                }else
+                }
+                else
                 {
                     e.BOOKINGS = null;
                     e.DEPARTMENTID = e.DEPARTMENT.ID;

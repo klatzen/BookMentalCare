@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
 using System.Data.SqlClient;
 using System.Data.Entity;
@@ -20,7 +18,7 @@ namespace BookMentalCareCore.DAL
                 dbContext.SaveChanges();
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -28,7 +26,7 @@ namespace BookMentalCareCore.DAL
 
         public Room FindRoom(int id)
         {
-            return dbContext.Rooms.Include(x=> x.DEPARTMENT).FirstOrDefault(x => x.ID == id);
+            return dbContext.Rooms.Include(x => x.DEPARTMENT).FirstOrDefault(x => x.ID == id);
         }
 
         public List<Room> FindRooms()
@@ -68,7 +66,7 @@ namespace BookMentalCareCore.DAL
             {
                 return false;
             }
-            
+
         }
     }
 }

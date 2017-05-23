@@ -1,10 +1,6 @@
 ﻿using BookMentalCareCore.BLL;
 using BookMentalCareCore.ModelLayer;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace BookMentalCare.Controllers
@@ -18,7 +14,7 @@ namespace BookMentalCare.Controllers
             this.resFac = new RessourceFacade();
         }
 
-       
+
         public IEnumerable<Ressource> Get()
         {
             return resFac.LoadAllRessources();
@@ -35,17 +31,17 @@ namespace BookMentalCare.Controllers
             return resFac.LoadRessource(id);
         }
 
-        
 
-       
 
-        [HttpPost,HttpPut]
+
+
+        [HttpPost, HttpPut]
         public void Post([FromBody]Ressource res)
         {
             resFac.SaveRessource(res);
         }
 
-        
+
         public void Delete(int id)
         {
             resFac.RemoveRessource(id);

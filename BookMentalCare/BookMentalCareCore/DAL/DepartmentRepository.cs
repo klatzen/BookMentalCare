@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
 
 namespace BookMentalCareCore.DAL
@@ -20,7 +18,7 @@ namespace BookMentalCareCore.DAL
 
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -40,12 +38,13 @@ namespace BookMentalCareCore.DAL
         {
             try
             {
-                if(d.ID > 0)
+                if (d.ID > 0)
                 {
                     Department tempDep = FindDepartment(d.ID);
                     tempDep.LOCATION = d.LOCATION;
                     tempDep.NAME = d.NAME;
-                }else
+                }
+                else
                 {
                     dbContext.Departments.Add(d);
                 }

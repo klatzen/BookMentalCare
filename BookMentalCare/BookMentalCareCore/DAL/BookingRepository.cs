@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-using System.Text;
-using System.Threading.Tasks;
 using BookMentalCareCore.ModelLayer;
-using System.Data.SqlClient;
 
 namespace BookMentalCareCore.DAL
 {
@@ -34,7 +31,7 @@ namespace BookMentalCareCore.DAL
             {
                 item.Ressource = resRepo.LoadRessource(item.RessourceId);
             }
-            foreach(Employee e in b.EMPLOYEES)
+            foreach (Employee e in b.EMPLOYEES)
             {
                 e.DEPARTMENT = depRepo.FindDepartment(e.DEPARTMENTID);
             }
@@ -44,8 +41,8 @@ namespace BookMentalCareCore.DAL
         {
             List<Booking> bookings = new List<Booking>();
             var list = dbContext.Database.SqlQuery<int>("select BookingRefId from EmpBook where EmployeeRefId = @p0", ID).ToList();
-            
-            foreach(var item in list)
+
+            foreach (var item in list)
             {
                 bookings.Add(FindBooking(item));
             }
@@ -73,16 +70,16 @@ namespace BookMentalCareCore.DAL
                 if (b.ID > 0)
                 {
                     deleteResAndEmp(b.ID);
-                    
+
                     Booking tempB = FindBooking(b.ID);
                     tempB.DESCRIPTION = b.DESCRIPTION;
-                    
+
                 }
                 else
                 {
 
                     dbContext.Bookings.Add(b);
-                    
+
                 }
                 dbContext.SaveChanges();
                 return insertEmpsAndRes(b.ID, tempEmps, tempRes);
@@ -98,7 +95,7 @@ namespace BookMentalCareCore.DAL
         {
             try
             {
-                dbContext.Database.ExecuteSqlCommand("delete from UnitBook where BookingRefId = @p0",ID);
+                dbContext.Database.ExecuteSqlCommand("delete from UnitBook where BookingRefId = @p0", ID);
                 dbContext.Database.ExecuteSqlCommand("delete from EmpBook where BookingRefId = @p0", ID);
                 dbContext.SaveChanges();
                 return true;
@@ -114,7 +111,7 @@ namespace BookMentalCareCore.DAL
         {
             try
             {
-                foreach(Employee e in emps)
+                foreach (Employee e in emps)
                 {
                     dbContext.Database.ExecuteSqlCommand("insert into EmpBook values(@p0, @p1)", e.ID, bookingID);
                 }
